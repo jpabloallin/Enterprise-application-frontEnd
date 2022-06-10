@@ -29,12 +29,20 @@ export const createProvider:any = createAsyncThunk('/save/provider', async (prov
     }) 
     return (await response.json()) as providerType
 })
+//delete a provider
+export const deleteProvider:any = createAsyncThunk('/provider/delete', async (provider: providerType) => {
+    const response = await fetch(`${URL_BASE}/delete/provider/${provider.id}`, {
+      method: 'DELETE',
+    })
+    return { deleted: response.ok, providerId: provider.id }
+  })
   
 export const providerSlice = createSlice({ 
     name: "providers",
     initialState,
     reducers: {
-        providerAdded: (state, action) => {}
+        providerAdded: (state, action) => {},
+        providerDeleted: (state, action) => {},
     },
     extraReducers: (builder) => {
         //get all providers
@@ -62,10 +70,24 @@ export const providerSlice = createSlice({
             state.status = fetchProviderStatus.FAILED
             state.error = 'Something went wrong while creating the provider'
         })
-    }
+        // delete
+        builder.addCase(deleteProvider.pending, (state) => {
+            state.status = fetchProviderStatus.PENDING
+        })
+        builder.addCase(deleteProvider.fulfilled, (state, action) => {
+            state.status = fetchProviderStatus.COMPLETED
+            if (action.payload.deleted) {
+                state.providers = state.providers.filter((provider) => provider.id !== action.payload.providerId)
+            }
+        })
+        builder.addCase(deleteProvider.rejected, (state) => {
+            state.status = fetchProviderStatus.FAILED
+            state.error = 'Something went wrong while deleting the post'
+        })
+    },
 })
 
-export const { providerAdded } = providerSlice.actions;
+export const { providerAdded, providerDeleted } = providerSlice.actions;
 
 export const selectProviderState = () => (state: RootState) => state.providers.providers
 export const selectProviderStatus = () => (state: RootState) => state.providers.status
