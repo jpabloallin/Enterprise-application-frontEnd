@@ -4,8 +4,6 @@ import { IProviderState, providerType } from '../types/providerTypes';
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const URL_BASE = 'http://localhost:8081';
-// uncomment to see the error fallback
-// const ENDPOINT = 'https://jsoholder.typicode.com/posts'
 
 const initialState: IProviderState = {
     providers: [],
@@ -82,7 +80,7 @@ export const providerSlice = createSlice({
         })
         builder.addCase(deleteProvider.rejected, (state) => {
             state.status = fetchProviderStatus.FAILED
-            state.error = 'Something went wrong while deleting the post'
+            state.error = 'Something went wrong while deleting the provider'
         })
     },
 })
