@@ -1,10 +1,8 @@
-//import React, { Profiler, useState } from "react";
-//import {useParams} from "react-router-dom"
 import { fetchProviderStatus, providerType } from "../../types/providerTypes";
 import { useDispatch, useSelector } from "react-redux";
 import ProviderForm from "./ProviderForm";
 import { RootState } from "../../app/store";
-import { getAllProviders, selectProviderFetchError, selectProviderState, selectProviderStatus } from "../../features/providerSlice";
+import { deleteProvider, getAllProviders, selectProviderFetchError, selectProviderState, selectProviderStatus } from "../../features/providerSlice";
 import { useEffect } from "react";
 
 interface IProviderProps {
@@ -25,6 +23,10 @@ const Provider:React.FC<IProviderProps> = () => {
     }
   }, [dispatch])
 
+  const handleDeletion = (provider: providerType) => {
+    dispatch(deleteProvider(provider))
+  }
+
   console.log(status)
 
   const renderList = () => {
@@ -36,20 +38,22 @@ const Provider:React.FC<IProviderProps> = () => {
             <td>{provider.name}</td>
             <td>{provider.passport}</td>
             <td>{provider.email}</td>
+            <td><button type="button" key={provider.id} onClick={() => handleDeletion(provider)}>Delete</button></td>
         </tr>
       );
     });
   };
 
   return (
-    <div className="table-responsive">
-      <h1>Providers!</h1>
-      <table className="table table-xl table-hover">
-        <thead className="thead-dark">
+    <div className="table-responsive ">
+      <div className="border border-dark bg-success text-white"><h2>Providers</h2></div>
+      <table className="table table-lg table-hover">
+        <thead className="thead-dark bg-dark text-white">
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Passport</th>
             <th scope="col">Email</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
           <tbody>{renderList()}</tbody>
