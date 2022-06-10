@@ -28,9 +28,9 @@ const ProviderForm: React.FC<IProviderFormProps> = (props) => {
   return (
     <>
     <form onSubmit={(e) => handleClick(e)}>
-        <div className="form-group row">
+        <div className="form-group row ml-3">
             <label className="col-sm-1 col-form-label">Name</label>
-            <div className="col-sm-10">
+            <div className="col-sm-10 ml-5">
                 <input type="text" name="name" id="name" placeholder="Name" className="form-control mb-4" value={name} onChange={(e) => setName(e.target.value)}/>
             </div>
         </div>
@@ -46,9 +46,9 @@ const ProviderForm: React.FC<IProviderFormProps> = (props) => {
                 <input type="email" name="email" id="email" placeholder="email" className="form-control mb-4" value={email} onChange={(e) => setEmail(e.target.value)}/>
             </div>
         </div>
-        <div>
-            <button type="submit" className="btn btn-success mb-4">
-                Add to providers
+        <div className="text-center">
+            <button type="submit" className="btn btn-success mb-4 ">
+                Add provider
             </button>
         </div>
     </form>
