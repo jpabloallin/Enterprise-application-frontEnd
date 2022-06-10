@@ -47,7 +47,7 @@ const ProviderForm: React.FC<IProviderFormProps> = (props) => {
             </div>
         </div>
         <div className="text-center">
-            <button type="submit" className="btn btn-success mb-4 ">
+            <button type="submit" className="btn btn-success mb-4 btn-outline-dark btn-lg">
                 Add provider
             </button>
         </div>

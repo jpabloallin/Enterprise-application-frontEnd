@@ -30,7 +30,7 @@ const Provider:React.FC<IProviderProps> = () => {
   console.log(status)
 
   const renderList = () => {
-    if(error) return <p><b>¡ERROR!</b> Unable to display questions.</p>
+    if(error) return <p><b>¡ERROR!</b> Unable to display providers.</p>
   
     if(providersState) return providers.map((provider) => {
       return (
@@ -38,7 +38,7 @@ const Provider:React.FC<IProviderProps> = () => {
             <td>{provider.name}</td>
             <td>{provider.passport}</td>
             <td>{provider.email}</td>
-            <td><button type="button" key={provider.id} onClick={() => handleDeletion(provider)}>Delete</button></td>
+            <td><button className="btn btn-success btn-outline-dark" type="button" key={provider.id} onClick={() => handleDeletion(provider)}>Delete</button></td>
         </tr>
       );
     });

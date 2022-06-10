@@ -13,7 +13,7 @@ function App() {
     <NavBar />
       <nav className="navbar navbar-dark bg-light d-flex justify-content-around p-1">
         <Link to="/" className="link-dark btn btn-secondary btn-lg active p-2">Main page</Link>
-        <Link to="/provider" className="btn btn-secondary btn-lg active p-2">Provider</Link>
+        <Link to="/provider" className="link-dark btn btn-secondary btn-lg active p-2">Provider</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Main />} />
