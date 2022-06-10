@@ -1,43 +1,62 @@
 //import React, { Profiler, useState } from "react";
 //import {useParams} from "react-router-dom"
-import { providerType } from "../../types/providerTypes";
+import { fetchProviderStatus, providerType } from "../../types/providerTypes";
 import { useDispatch, useSelector } from "react-redux";
 import ProviderForm from "./ProviderForm";
 import { RootState } from "../../app/store";
+import { getAllProviders, selectProviderFetchError, selectProviderState, selectProviderStatus } from "../../features/providerSlice";
+import { useEffect } from "react";
 
 interface IProviderProps {
   provider?: providerType
 }
 
 const Provider:React.FC<IProviderProps> = () => {
-  
+  const dispatch = useDispatch()
+  const error = useSelector(selectProviderFetchError())
+  const status = useSelector(selectProviderStatus())
+  const providersState = useSelector(selectProviderState())
 
   const providers = useSelector((state: RootState) => state.providers.providers);
 
+  useEffect(() => {
+    if (status === fetchProviderStatus.IDLE) {
+      dispatch(getAllProviders())
+    }
+  }, [dispatch])
+
+  console.log(status)
+
   const renderList = () => {
-    return providers.map((provider) => {
+    if(error) return <p><b>¡ERROR!</b> Unable to display questions.</p>
+  
+    if(providersState) return providers.map((provider) => {
       return (
-        <li className="list-group-item list-group-item-info d-flex justify-content-around" key={provider.id}>
-          <div>
-            <h2>{provider.name}</h2>
-          </div>
-          <div>
-            <h2>{provider.passport}</h2>
-          </div>
-          <div>
-            <h3>{provider.email}</h3>
-          </div>
-        </li>
+        <tr key={provider.id}>
+            <td>{provider.name}</td>
+            <td>{provider.passport}</td>
+            <td>{provider.email}</td>
+        </tr>
       );
     });
   };
 
   return (
-    <div>
+    <div className="table-responsive">
       <h1>Providers!</h1>
-      <ul>{renderList()}</ul>
-      <ProviderForm />
+      <table className="table table-xl table-hover">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Passport</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+          <tbody>{renderList()}</tbody>
+      </table>
+    <ProviderForm />
     </div>
+    
   );
 };
 
