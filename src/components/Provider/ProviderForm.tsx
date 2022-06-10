@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { providerAdded } from "../../features/providerSlice";
+import { createProvider, providerAdded } from "../../features/providerSlice";
 import { providerType } from "../../types/providerTypes";
 
 interface IProviderFormProps { }
@@ -16,8 +16,9 @@ const ProviderForm: React.FC<IProviderFormProps> = (props) => {
     const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(name && passport && email) {
+        //dispatch
         const newProvider: providerType = {name, passport, email, id:nanoid()}
-        dispatch(providerAdded(newProvider))    
+        dispatch(createProvider(newProvider))    
         setName('')
         setPassport('')
         setEmail('')
