@@ -16,4 +16,4 @@ export enum fetchProviderStatus {
     COMPLETED = 'completed',
     FAILED = 'failed',
     PENDING = 'pending',
-  }
+}
