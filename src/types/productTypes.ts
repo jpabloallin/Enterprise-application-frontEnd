@@ -2,6 +2,7 @@ import { providerType } from './providerTypes';
 export type productType = {
     id: number | string
     name: string
+    description:string
     currentUnits: number
     minimumUnits: number
     maximumUnits: number
