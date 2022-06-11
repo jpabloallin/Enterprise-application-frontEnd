@@ -1,6 +1,6 @@
 import { fetchProviderStatus, providerType } from "../../types/providerTypes";
 import { useDispatch, useSelector } from "react-redux";
-import ProviderForm from "./ProviderForm";
+import ProviderForm from "./ProviderForm"
 import { RootState } from "../../app/store";
 import { deleteProvider, getAllProviders, selectProviderFetchError, selectProviderState, selectProviderStatus } from "../../features/providerSlice";
 import { useEffect } from "react";
