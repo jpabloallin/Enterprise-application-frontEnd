@@ -1,10 +1,10 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Footer from './components/Footer/Footer'
-import NavBar from './components/NavBar/NavBar'
-import Main from './components/Main/Main'
-import Provider from './components/Provider/Provider'
-import Product from './components/product/product'
+import Footer from './components/footer/Footer'
+import NavBar from './components/navBar/NavBar'
+import Main from './components/main/Main'
+import Provider from './components/provider/Provider'
+import Product from './components/product/Product'
 
 function App() {
 

@@ -88,8 +88,8 @@ export const productSlice = createSlice({
 
 export const { productAdded, productDeleted } = productSlice.actions;
 
-export const selectProviderState = () => (state: RootState) => state.providers.providers
-export const selectProviderStatus = () => (state: RootState) => state.providers.status
-export const selectProviderFetchError = () => (state: RootState) => state.providers.error
+export const selectProductState = () => (state: RootState) => state.products.products
+export const selectProductStatus = () => (state: RootState) => state.products.status
+export const selectProductFetchError = () => (state: RootState) => state.products.error
 
 export default productSlice.reducer;
