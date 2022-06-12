@@ -23,18 +23,18 @@ function App() {
       <NavBar/>
       {user!==null?
       <nav className="navbar navbar-dark bg-light d-flex justify-content-around p-1">
-        <Link to="/login">Log in</Link>
-        <Link to="/signin">Sign in</Link>
+        <Link to="/login" className="link-dark btn btn-secondary btn-lg active p-2">Log in</Link>
+        <Link to="/signin" className="link-dark btn btn-secondary btn-lg active p-2">Sign in</Link>
         <Link to="/" className="link-dark btn btn-secondary btn-lg active p-2">Main page</Link>
         <Link to="/provider" className="link-dark btn btn-secondary btn-lg active p-2">Provider</Link>
         <Link to="/product" className="link-dark btn btn-secondary btn-lg active p-2">Product</Link>
         <Link to="/receipt" className="link-dark btn btn-secondary btn-lg active p-2">Receipt</Link>
-        <Link to="/logOut" className="link-dark btn btn-secondary btn-lg active p-2">Log Out</Link>
+        <Link to="/logOut" className="link-danger btn-outline-dark btn btn-secondary btn-lg active p-2">Log Out</Link>
       </nav>:
       <nav className="navbar navbar-dark bg-light d-flex justify-content-around p-1">
-        <Link to="/login">Log in</Link>
-        <Link to="/signin">Sign in</Link>
-        <Link to="/loginGoogle">Login with Google</Link>
+        <Link to="/login" className="link-dark btn btn-secondary btn-lg active p-2">Log in</Link>
+        <Link to="/signin" className="link-dark btn btn-secondary btn-lg active p-2">Sign in</Link>
+        <Link to="/loginGoogle" className="link-dark btn btn-secondary btn-lg active p-2">Login with Google</Link>
       </nav>
       }
       <Routes>

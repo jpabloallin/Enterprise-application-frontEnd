@@ -16,7 +16,10 @@ const LogOut: React.FunctionComponent = () => {
 
   return (
     <div>
-      <button onClick={logOutButton}>Log Out</button>
+        <br />
+        <h3>¿De verdad quieres cerrar la sesión?</h3><br />
+        <button className="btn btn-danger mb-4 btn-outline-dark btn-lg" onClick={logOutButton}>Log Out</button>
+        <br /><br />
     </div>
   );
 };
