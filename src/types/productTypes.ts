@@ -1,6 +1,6 @@
 import { providerType } from './providerTypes';
 export type productType = {
-    id: number | string
+    id: string
     name: string
     description:string
     currentUnits: number
@@ -14,6 +14,16 @@ export interface IProductState {
     products: productType[]
     status: fetchProductStatus
     error: string | null
+}
+
+export interface IProductToBeSold {
+    id: string
+    name: string
+    units: number
+    currentUnits: number
+    maximumUnits: number
+    minimumUnits: number
+    price: number
 }
 
 export enum fetchProductStatus {
