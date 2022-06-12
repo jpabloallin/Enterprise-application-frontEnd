@@ -1,5 +1,5 @@
 export type providerType = {
-    id: number | string
+    id: string
     name: string
     passport: string
     email: string 

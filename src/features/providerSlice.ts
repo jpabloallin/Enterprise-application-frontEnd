@@ -1,7 +1,7 @@
 import { RootState } from './../app/store';
 import { fetchProviderStatus } from './../types/providerTypes';
 import { IProviderState, providerType } from '../types/providerTypes';
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const URL_BASE = 'http://localhost:8081';
 

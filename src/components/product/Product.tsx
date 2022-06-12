@@ -9,6 +9,7 @@ interface IProductProps {
   product?: productType
 }
 
+
 const Product:React.FC<IProductProps> = () => {
   const dispatch = useDispatch()
   const error = useSelector(selectProductFetchError())
@@ -26,8 +27,6 @@ const Product:React.FC<IProductProps> = () => {
   const handleDeletion = (product: productType) => {
     dispatch(deleteProduct(product))
   }
-
-  console.log(status)
 
   const renderList = () => {
     if(error) return <p><b>¡ERROR!</b> Unable to display products.</p>

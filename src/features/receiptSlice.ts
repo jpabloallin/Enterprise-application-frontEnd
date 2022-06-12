@@ -1,7 +1,5 @@
 import { RootState } from './../app/store';
-import { fetchProviderStatus } from './../types/providerTypes';
-import { IProviderState, providerType } from '../types/providerTypes';
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchReceiptStatus, IReceiptState, receiptType } from '../types/receiptTypes';
 
 const URL_BASE = 'http://localhost:8081';
@@ -33,8 +31,7 @@ export const receiptSlice = createSlice({
     name: "receipts",
     initialState,
     reducers: {
-        providerAdded: (state, action) => {},
-        providerDeleted: (state, action) => {},
+        receiptAdded: (state, action) => {},
     },
     extraReducers: (builder) => {
         //get all receipts
@@ -65,10 +62,11 @@ export const receiptSlice = createSlice({
     },
 })
 
-export const { providerAdded, providerDeleted } = receiptSlice.actions;
+export const { receiptAdded } = receiptSlice.actions;
 
 export const selectReceiptState = () => (state: RootState) => state.receipts.receipts
 export const selectReceiptStatus = () => (state: RootState) => state.receipts.status
 export const selectReceiptFetchError = () => (state: RootState) => state.receipts.error
+export const selectProviderById = (id:string) => (state: RootState) => state.providers.providers.find(provider => provider.id === id)
 
 export default receiptSlice.reducer;

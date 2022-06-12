@@ -10,12 +10,6 @@ interface IProductFormProps { }
 
 const ProductForm: React.FC<IProductFormProps> = (props) => {
     
-    // <select name="" id="" onChange={e => setProviderId(e.target.value)}>
-    //             {providers.map((provider) => 
-    //             <option key={provider.id} value = {provider.id}> 
-    //               {provider.name} 
-    //             </option>)}
-    //           </select>
     const providers = useSelector((state: RootState) => state.providers.providers);
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -30,13 +24,11 @@ const ProductForm: React.FC<IProductFormProps> = (props) => {
         const providerValues = providers.find((p) => p.id === e.target.value)
         if (providerValues) return setProvider(providerValues)
     }
-    console.log('provider :>> ', provider);
 
     const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(name && currentUnits && minimumUnits && maximumUnits && price && provider) {
         //dispatch
-        console.log('objectProvider :>> ', provider);
         const newProduct:productType = {id:nanoid(), name:name, description:description, currentUnits:currentUnits, minimumUnits:minimumUnits, maximumUnits:maximumUnits , price:price , provider:provider}
         dispatch(createProduct(newProduct))    
         setName('')

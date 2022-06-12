@@ -1,8 +1,8 @@
 import { providerType } from './providerTypes';
 export type receiptType = {
-    id?: number | string
-    date?: Date
-    provider: providerType
+    id: string
+    date: string
+    providerId: string
     productId: string,
     units: number
 }

@@ -44,7 +44,7 @@ export const productSlice = createSlice({
         productDeleted: (state, action) => {},
     },
     extraReducers: (builder) => {
-        //get all providers
+        //get all products
         builder.addCase(getAllProducts.pending, (state, action) => {
             state.status = fetchProductStatus.PENDING
         })
@@ -91,5 +91,6 @@ export const { productAdded, productDeleted } = productSlice.actions;
 export const selectProductState = () => (state: RootState) => state.products.products
 export const selectProductStatus = () => (state: RootState) => state.products.status
 export const selectProductFetchError = () => (state: RootState) => state.products.error
+export const selectProductById = (id:string) => (state: RootState) => state.products.products.find(product => product.id === id)
 
 export default productSlice.reducer;

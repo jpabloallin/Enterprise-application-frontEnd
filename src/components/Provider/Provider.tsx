@@ -27,7 +27,6 @@ const Provider:React.FC<IProviderProps> = () => {
     dispatch(deleteProvider(provider))
   }
 
-  console.log(status)
 
   const renderList = () => {
     if(error) return <p><b>¡ERROR!</b> Unable to display providers.</p>
