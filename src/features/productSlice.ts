@@ -34,7 +34,17 @@ export const deleteProduct:any = createAsyncThunk('/product/delete', async (prod
       method: 'DELETE',
     })
     return { deleted: response.ok, productId: product.id }
-  })
+})
+//update a product
+export const updateProduct:any = createAsyncThunk('/update/product', async (product: productType) => {
+    const response = await fetch(`${URL_BASE}/update/product`, {
+        method: 'PUT',
+            headers: {'Content-type': 'application/json; charset=UTF-8',
+        },
+            body: JSON.stringify(product)
+        })
+        return (await response.json()) as productType
+})
   
 export const productSlice = createSlice({ 
     name: "products",
@@ -42,6 +52,7 @@ export const productSlice = createSlice({
     reducers: {
         productAdded: (state, action) => {},
         productDeleted: (state, action) => {},
+        productUpdate: (state, action) => {}
     },
     extraReducers: (builder) => {
         //get all products
@@ -83,10 +94,24 @@ export const productSlice = createSlice({
             state.status = fetchProductStatus.FAILED
             state.error = 'Something went wrong while deleting the product'
         })
+        //Update
+        builder.addCase(updateProduct.pending, (state) => {
+            state.status = fetchProductStatus.PENDING
+
+        })
+        builder.addCase(updateProduct.rejected, (state, action) => {
+            state.status = fetchProductStatus.FAILED
+            state.error = 'Something went wrong while deleting the product'
+        })
+        builder.addCase(updateProduct.fulfilled, (state, action) => {
+            state.status = fetchProductStatus.COMPLETED
+            const updatedProduct = action.payload
+            state.products = state.products.map(product => product.id === updatedProduct.id ? updatedProduct : product)
+        })
     },
 })
 
-export const { productAdded, productDeleted } = productSlice.actions;
+export const { productAdded, productDeleted, productUpdate } = productSlice.actions;
 
 export const selectProductState = () => (state: RootState) => state.products.products
 export const selectProductStatus = () => (state: RootState) => state.products.status

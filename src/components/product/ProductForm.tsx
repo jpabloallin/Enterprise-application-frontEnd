@@ -9,7 +9,7 @@ import { providerType } from "../../types/providerTypes";
 interface IProductFormProps { }
 
 const ProductForm: React.FC<IProductFormProps> = () => {
-    
+    const initialStock = 0
     const providers = useSelector((state: RootState) => state.providers.providers);
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -29,7 +29,7 @@ const ProductForm: React.FC<IProductFormProps> = () => {
         e.preventDefault()
         if(name && currentUnits && minimumUnits && maximumUnits && price && provider) {
         //dispatch
-        const newProduct:productType = {id:nanoid(), name:name, description:description, currentUnits:currentUnits, minimumUnits:minimumUnits, maximumUnits:maximumUnits , price:price , provider:provider}
+        const newProduct:productType = {id:nanoid(), name:name, description:description, currentUnits:currentUnits, minimumUnits:initialStock, maximumUnits:maximumUnits , price:price , provider:provider}
         dispatch(createProduct(newProduct))    
         setName('')
         setDescription('')
