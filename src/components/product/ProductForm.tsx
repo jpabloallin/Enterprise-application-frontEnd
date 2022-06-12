@@ -8,7 +8,7 @@ import { providerType } from "../../types/providerTypes";
 
 interface IProductFormProps { }
 
-const ProductForm: React.FC<IProductFormProps> = (props) => {
+const ProductForm: React.FC<IProductFormProps> = () => {
     
     const providers = useSelector((state: RootState) => state.providers.providers);
     const [name, setName] = useState('')
@@ -80,8 +80,8 @@ const ProductForm: React.FC<IProductFormProps> = (props) => {
             </div>
         </div>
         <select name="" id="" onChange={e => handleChange(e)}>
-            {providers.map((provider) => (
-                <option  key={provider.id} value={provider.id}>{provider.name}</option>
+            {providers.map((prov) => (
+                <option  key={prov.id} value={prov.id}>{prov.name}</option>
                 ))}
         </select>
         <div className="text-center">
@@ -89,7 +89,6 @@ const ProductForm: React.FC<IProductFormProps> = (props) => {
                 Create product
             </button>
         </div>
-
     </form>
     </>
   );

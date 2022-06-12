@@ -1,4 +1,3 @@
-import { providerType } from './providerTypes';
 export type receiptType = {
     id: string
     date: string

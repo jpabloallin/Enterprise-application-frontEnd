@@ -1,12 +1,12 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createProvider, providerAdded } from "../../features/providerSlice";
+import { createProvider } from "../../features/providerSlice";
 import { providerType } from "../../types/providerTypes";
 
 interface IProviderFormProps { }
 
-const ProviderForm: React.FC<IProviderFormProps> = (props) => {
+const ProviderForm: React.FC<IProviderFormProps> = () => {
     
     const [name, setName] = useState('')
     const [passport, setPassport] = useState('')
