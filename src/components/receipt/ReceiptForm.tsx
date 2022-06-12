@@ -8,7 +8,7 @@ import { createReceipt } from "../../features/receiptSlice";
 import { getAllProviders } from "../../features/providerSlice";
 import { productType } from "../../types/productTypes";
 import { updateProduct } from "../../features/productSlice";
-import { Alert, Button, NumberInput } from "@mantine/core";
+import { Alert, NumberInput } from "@mantine/core";
 
 interface IReceiptFormProps {}
 
@@ -22,7 +22,6 @@ const ReceiptForm: React.FC<IReceiptFormProps> = () => {
 
   const [productId, setProductId] = useState("");
   const [editProduct, setEditProduct] = useState<productType>();
-  const [showButton, setShowButton] = useState(false)
   const [units, setUnits] = useState<any>(0);
 
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
