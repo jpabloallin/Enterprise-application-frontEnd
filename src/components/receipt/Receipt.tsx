@@ -9,7 +9,7 @@ import { receiptType } from '../../types/receiptTypes'
 import ReceiptForm from './ReceiptForm'
 
 interface IReceiptProps { 
-  receipt: receiptType
+  receipt?: receiptType
 }
 
 const Receipt:React.FC<IReceiptProps> = () => {
