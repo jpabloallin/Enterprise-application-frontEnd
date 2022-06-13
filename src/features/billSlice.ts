@@ -37,14 +37,14 @@ export const billSlice = createSlice(
         },
         //GET BILLS
         extraReducers: (builder) => {
-            builder.addCase(getAllBills.pending, (state, action) => {
+            builder.addCase(getAllBills.pending, (state) => {
                 state.status = fetchBillStatus.PENDING
             })
             builder.addCase(getAllBills.fulfilled, (state, action) => {
                 state.status = fetchBillStatus.COMPLETED
                 state.bills = action.payload
             })
-            builder.addCase(getAllBills.rejected, (state, action) => {
+            builder.addCase(getAllBills.rejected, (state) => {
                 state.status = fetchBillStatus.FAILED
                 state.bills = []
             })

@@ -110,19 +110,4 @@ const ReceiptForm: React.FC<IReceiptFormProps> = () => {
     </form>
   );
 };
-
-// {
-//   editProduct?.name &&
-//   <>  
-//     <input type="text" name="" id="" className="border-2 border-amber-500 rounded-md" minimumUnits={0} maximumUnits={editProduct.maximumUnits - editProduct.currentUnits} value={units}
-//       onChange={(e) => setUnits(Number(e.target.value))} label= {`Product units: ${editProduct.currentUnits + units} / ${editProduct.maximumUnits}`}
-//     />
-//     {
-//       (editProduct.currentUnits + units) >= editProduct.maximumUnits &&
-//       <Alert title="Max Current Units" color="red">
-//         Product's currents units have reached its max: {editProduct.maximumUnits}!
-//       </Alert>
-//     }
-//   </>  
-// }
 export default ReceiptForm;

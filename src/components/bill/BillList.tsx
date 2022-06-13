@@ -23,7 +23,7 @@ const BillList: React.FunctionComponent<IBillListProps> = () => {
   
   useEffect(() => {
     if (user === null) {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
 

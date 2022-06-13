@@ -1,13 +1,15 @@
 import { signInWithPopup, GoogleAuthProvider, OAuthCredential } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { auth } from "./firebaseConfig";
+import { auth } from "./firebaseConfig"
 import { logInReducer } from "../../features/loggedInSlice"
 import { useNavigate } from "react-router-dom";
+import { Avatar, Button, Container } from "@mantine/core";
+import { Typography } from "tabler-icons-react";
 
-const providerGoogleAuth = new GoogleAuthProvider();
 
 const GoogleLogIn: React.FunctionComponent = () => {
 
+  const providerGoogleAuth = new GoogleAuthProvider();
 
   const dispatch = useDispatch();
 
@@ -17,44 +19,27 @@ const GoogleLogIn: React.FunctionComponent = () => {
 
     signInWithPopup(auth, providerGoogleAuth)
     .then((result) => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
       const credential:OAuthCredential | null = GoogleAuthProvider.credentialFromResult(result);
-
       const token = credential!.accessToken;
-
-      // The signed-in user info.
-      //If the logged in is succesfull you will acces this part of the code where you will 
-      //get a lot of information about the user that have logged in
       const user = result.user;
 
-      /*Whit the information of the user you can populate an state that is mainly focused on 
-        holding the information of the user that is logged in*/
-
       dispatch(logInReducer(user))
-      navigate('/')
-
-      // ...
+      navigate('/main')
     }).catch((error) => {
-
-      //If the logged in is not succesfull yu will get to this part and with the message you can tell 
-      //the user what went wrong
-
-
-      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
-      // The email of the user's account used.
       const email = error.email;
-      // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
     });
   }
 
   return (
-    <div>
-      <button onClick={signInWithGoogleButton}>Log in with google</button>
-    </div>
+    <Container className="classes.center">
+      <Button className="classes.button" onClick={signInWithGoogleButton}>
+        <Avatar src={"https://freepngimg.com/thumb/google/66912-logo-now-google-plus-search-free-transparent-image-hd.png"} className="classes.avatar" />
+          Sign in with Google
+      </Button>
+    </Container>
   );
 };
 

@@ -1,16 +1,15 @@
 import * as React from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { productType } from "../../types/productTypes";
 import { getAllProducts, selectProductState } from "../../features/productSlice";
 import { addProductSoldReducer, getItems } from "../../features/productSoldSlice";
-import { productSoldType, soldProductsType } from "../../types/billTypes";
+import { productSoldType } from "../../types/billTypes";
 import ItemList from "./ProductsSoldList";
 
 interface IItemFormProps {}
 
-const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = (props) => {
+const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = () => {
   const [product, setProduct] = useState({} as productType);
   const [currentUnits, setCurrentUnits] = useState<any>(0);
   const products = useSelector(selectProductState());

@@ -24,7 +24,7 @@ const Receipt:React.FC<IReceiptProps> = () => {
   
   useEffect(() => {
     if (user === null) {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
 

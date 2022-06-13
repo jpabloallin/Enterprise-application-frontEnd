@@ -1,5 +1,5 @@
 import { RootState } from '../app/store';
-import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { productSoldType } from "../types/billTypes";
 
 interface initialStateType {

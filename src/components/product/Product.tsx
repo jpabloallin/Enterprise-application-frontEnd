@@ -24,7 +24,7 @@ const Product:React.FC<IProductProps> = () => {
   
   useEffect(() => {
     if (user === null) {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
 

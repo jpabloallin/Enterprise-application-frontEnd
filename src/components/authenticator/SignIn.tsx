@@ -1,10 +1,10 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { RootState } from '../../app/store'
 import { logInReducer } from "../../features/loggedInSlice"
 import { auth } from './firebaseConfig'
+import GitHubLogIn from './GitHubLogIn'
 
 
 const SignIn = () => {
@@ -52,27 +52,39 @@ const SignIn = () => {
   }
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form>
-        <label htmlFor="email">Email</label><br />
-        <input 
-          onChange={(e) => setUserName(e.target.value)}  
-          type="email" 
-          name="email"
-          value={userName}
-          /><br />
-        <label htmlFor="password">Password</label><br />
-        <input 
-          onChange={(e) => setPassword(e.target.value)}  
-          type="password" 
-          name="password"
-          value={password}
-          /><br />
-        <button onClick={(e) => signInForm(e)}>Sign in</button><br />
+    <div className="border border-dark rounded p-4">
+      <form >
+        <h3 className="border border-dark bg-success text-white p-3">Sign In</h3><br />
+        <div className="mb-3">
+          <label>Email address</label><br /><br />
+          <input
+            onChange={(e) => setUserName(e.target.value)}
+            type="email"
+            name= "email"
+            className="form-control"
+            placeholder="Enter email"
+          />
+        </div>
+        <div className="mb-3">
+          <label>Password</label><br /><br />
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+          />
+        </div>
+        <div className="d-grid px-5">
+          <button onClick={(e) => signInForm(e)} type="submit" className="btn btn-success mb-2 mt-3 btn-outline-dark btn-md">
+            Sign In
+          </button>
+        </div>
+        <div>
+        <GitHubLogIn/>
+      </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default SignIn

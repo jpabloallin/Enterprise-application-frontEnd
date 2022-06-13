@@ -50,20 +50,18 @@ export const productSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        productAdded: (state, action) => {},
-        productDeleted: (state, action) => {},
-        productUpdate: (state, action) => {}
+        
     },
     extraReducers: (builder) => {
         //get all products
-        builder.addCase(getAllProducts.pending, (state, action) => {
+        builder.addCase(getAllProducts.pending, (state) => {
             state.status = fetchProductStatus.PENDING
         })
         builder.addCase(getAllProducts.fulfilled, (state, action) => {
             state.status = fetchProductStatus.COMPLETED
             state.products = action.payload
         })
-        builder.addCase(getAllProducts.rejected, (state, action) => {
+        builder.addCase(getAllProducts.rejected, (state) => {
             state.status = fetchProductStatus.FAILED
             state.error = 'Something went wrong while fetching'
             state.products = []
@@ -99,7 +97,7 @@ export const productSlice = createSlice({
             state.status = fetchProductStatus.PENDING
 
         })
-        builder.addCase(updateProduct.rejected, (state, action) => {
+        builder.addCase(updateProduct.rejected, (state) => {
             state.status = fetchProductStatus.FAILED
             state.error = 'Something went wrong while deleting the product'
         })
@@ -111,7 +109,6 @@ export const productSlice = createSlice({
     },
 })
 
-export const { productAdded, productDeleted, productUpdate } = productSlice.actions;
 
 export const selectProductState = () => (state: RootState) => state.products.products
 export const selectProductStatus = () => (state: RootState) => state.products.status

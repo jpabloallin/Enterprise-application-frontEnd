@@ -22,7 +22,7 @@ const Provider:React.FC<IProviderProps> = () => {
   
   useEffect(() => {
     if (user === null) {
-      navigate("/login");
+      navigate("/");
     }
   }, []);
 

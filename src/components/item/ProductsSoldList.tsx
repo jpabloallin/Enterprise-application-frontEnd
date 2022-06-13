@@ -5,7 +5,7 @@ interface IProductsSoldListProps {
     items: productSoldType[]
 }
 
-const ItemList: React.FunctionComponent<IProductsSoldListProps> = ({items}) => {
+const ProductsSoldList: React.FunctionComponent<IProductsSoldListProps> = ({items}) => {
   return (
     <>
     <div className="mt-3">
@@ -35,4 +35,4 @@ const ItemList: React.FunctionComponent<IProductsSoldListProps> = ({items}) => {
   );
 };
 
-export default ItemList;
+export default ProductsSoldList;

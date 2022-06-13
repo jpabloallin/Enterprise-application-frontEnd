@@ -31,18 +31,18 @@ export const receiptSlice = createSlice({
     name: "receipts",
     initialState,
     reducers: {
-        receiptAdded: (state, action) => {},
+        
     },
     extraReducers: (builder) => {
         //get all receipts
-        builder.addCase(getAllReceipts.pending, (state, action) => {
+        builder.addCase(getAllReceipts.pending, (state) => {
             state.status = fetchReceiptStatus.PENDING
         })
         builder.addCase(getAllReceipts.fulfilled, (state, action) => {
             state.status = fetchReceiptStatus.COMPLETED
             state.receipts = action.payload
         })
-        builder.addCase(getAllReceipts.rejected, (state, action) => {
+        builder.addCase(getAllReceipts.rejected, (state) => {
             state.status = fetchReceiptStatus.FAILED
             state.error = 'Something went wrong while fetching'
             state.receipts = []
@@ -62,7 +62,6 @@ export const receiptSlice = createSlice({
     },
 })
 
-export const { receiptAdded } = receiptSlice.actions;
 
 export const selectReceiptState = () => (state: RootState) => state.receipts.receipts
 export const selectReceiptStatus = () => (state: RootState) => state.receipts.status

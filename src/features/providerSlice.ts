@@ -39,19 +39,17 @@ export const providerSlice = createSlice({
     name: "providers",
     initialState,
     reducers: {
-        providerAdded: (state, action) => {},
-        providerDeleted: (state, action) => {},
     },
     extraReducers: (builder) => {
         //get all providers
-        builder.addCase(getAllProviders.pending, (state, action) => {
+        builder.addCase(getAllProviders.pending, (state) => {
             state.status = fetchProviderStatus.PENDING
         })
         builder.addCase(getAllProviders.fulfilled, (state, action) => {
             state.status = fetchProviderStatus.COMPLETED
             state.providers = action.payload
         })
-        builder.addCase(getAllProviders.rejected, (state, action) => {
+        builder.addCase(getAllProviders.rejected, (state) => {
             state.status = fetchProviderStatus.FAILED
             state.error = 'Something went wrong while fetching'
             state.providers = []
@@ -85,7 +83,6 @@ export const providerSlice = createSlice({
     },
 })
 
-export const { providerAdded, providerDeleted } = providerSlice.actions;
 
 export const selectProviderState = () => (state: RootState) => state.providers.providers
 export const selectProviderStatus = () => (state: RootState) => state.providers.status
