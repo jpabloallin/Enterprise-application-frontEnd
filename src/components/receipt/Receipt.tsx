@@ -40,8 +40,7 @@ const Receipt:React.FC<IReceiptProps> = () => {
     dispatch(getAllProviders())
   }, [])
 
-
-  const renderList = () => {
+  const renderList = ():any => {
     if(error) return <p><b>¡ERROR!</b> Unable to display receipts.</p>
     if(receiptsState && products.length>0 && providers.length>0)  return receipts.map((receipt) => {
       const productName = products.find(product => product.id === receipt.productId)!.name

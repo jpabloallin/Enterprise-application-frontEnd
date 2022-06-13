@@ -2,7 +2,6 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import * as currentDate from "moment";
 import { receiptType } from "../../types/receiptTypes";
 import { createReceipt } from "../../features/receiptSlice";
 import { getAllProviders } from "../../features/providerSlice";
@@ -29,7 +28,6 @@ const ReceiptForm: React.FC<IReceiptFormProps> = () => {
     
     if (productId && units) {
       const product = products.filter(p => p.id === productId)[0];
-      //const date = currentDate(new Date()).format("DD/MM/YYYY")
       const productToUpdate = editProduct as productType
       const newReceipt: receiptType = {id:nanoid(), providerId:product.provider.id, productId:productId, units:units};
       const updateProductCurrentUnits: productType = {...productToUpdate, currentUnits: productToUpdate?.currentUnits + units}
