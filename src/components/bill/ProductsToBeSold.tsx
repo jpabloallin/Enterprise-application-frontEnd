@@ -4,7 +4,6 @@ import {selectProductById} from "../../features/productSlice";
 import {productType, IProductToBeSold} from "../../types/productTypes";
 import {Alert, Box, Button, Group, Text} from "@mantine/core";
 import {AlertCircle} from "tabler-icons-react";
-import {useEffect} from "react";
 
 interface IProps {
     productId: string
