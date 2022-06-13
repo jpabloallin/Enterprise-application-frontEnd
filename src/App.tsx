@@ -24,8 +24,6 @@ function App() {
       <NavBar/>
       {user!==null?
       <nav className="navbar navbar-dark bg-light d-flex justify-content-around p-1">
-        <Link to="/login" className="link-dark btn btn-secondary btn-lg active p-2">Log in</Link>
-        <Link to="/signin" className="link-dark btn btn-secondary btn-lg active p-2">Sign in</Link>
         <Link to="/" className="link-dark btn btn-secondary btn-lg active p-2">Main page</Link>
         <Link to="/provider" className="link-dark btn btn-secondary btn-lg active p-2">Provider</Link>
         <Link to="/product" className="link-dark btn btn-secondary btn-lg active p-2">Product</Link>

@@ -5,6 +5,8 @@ import { getAllBills, selectBillError, selectBillState, selectBillStatus } from 
 import { fetchBillStatus } from '../../types/billTypes';
 import Bill from './Bill';
 import BillForm from './BillForm';
+import { useNavigate } from 'react-router-dom';
+import { RootState } from '../../app/store';
 
 interface IBillListProps {
 }
@@ -15,6 +17,15 @@ const BillList: React.FunctionComponent<IBillListProps> = () => {
   const bills = useSelector(selectBillState)
   const billStatus = useSelector(selectBillStatus)
   const billError = useSelector(selectBillError)
+
+  const { user } = useSelector((state: RootState) => state.logged);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (user === null) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     if (billStatus === fetchBillStatus.IDLE){

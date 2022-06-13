@@ -4,6 +4,7 @@ import ProviderForm from "./ProviderForm"
 import { RootState } from "../../app/store";
 import { deleteProvider, getAllProviders, selectProviderFetchError, selectProviderState, selectProviderStatus } from "../../features/providerSlice";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface IProviderProps {
   provider?: providerType
@@ -16,6 +17,14 @@ const Provider:React.FC<IProviderProps> = () => {
   const providersState = useSelector(selectProviderState())
 
   const providers = useSelector((state: RootState) => state.providers.providers);
+  const { user } = useSelector((state: RootState) => state.logged);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (user === null) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     if (status === fetchProviderStatus.IDLE) {

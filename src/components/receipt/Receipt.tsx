@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../app/store'
 import { getAllProducts, selectProductState} from '../../features/productSlice'
 import { getAllProviders, selectProviderState } from '../../features/providerSlice'
@@ -18,6 +19,14 @@ const Receipt:React.FC<IReceiptProps> = () => {
   const receipts = useSelector((state: RootState) => state.receipts.receipts);
   const products = useSelector(selectProductState())
   const providers = useSelector(selectProviderState())
+  const { user } = useSelector((state: RootState) => state.logged);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (user === null) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(getAllProducts())

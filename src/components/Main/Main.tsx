@@ -7,13 +7,9 @@ import { getAllProviders } from "../../features/providerSlice";
 import { getAllReceipts } from "../../features/receiptSlice";
 
 const Main = () => {
-  const dispatch = useDispatch();
 
   const { user } = useSelector((state: RootState) => state.logged);
-
   const navigate = useNavigate();
-
-  console.log(user);
 
   useEffect(() => {
     if (user === null) {

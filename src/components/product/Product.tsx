@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { RootState } from '../../app/store'
 import { deleteProduct, getAllProducts, selectProductFetchError, selectProductState, selectProductStatus } from '../../features/productSlice'
 import { fetchProductStatus, productType } from '../../types/productTypes'
@@ -17,6 +18,15 @@ const Product:React.FC<IProductProps> = () => {
   const productsState = useSelector(selectProductState())
 
   const products = useSelector((state: RootState) => state.products.products);
+
+  const { user } = useSelector((state: RootState) => state.logged);
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (user === null) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     if (status === fetchProductStatus.IDLE) {
