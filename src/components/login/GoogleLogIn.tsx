@@ -31,7 +31,6 @@ const GoogleLogIn: React.FunctionComponent = () => {
         holding the information of the user that is logged in*/
 
       dispatch(logInReducer(user))
-      
       navigate('/')
 
       // ...
