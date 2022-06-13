@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logInReducer } from "../../features/loggedInSlice";
 import { auth } from "./firebaseConfig"
-import GitHubLogIn from "./GitHubLogIn";
 import GoogleLogIn from "./GoogleLogIn";
 
 

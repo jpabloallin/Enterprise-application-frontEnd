@@ -1,4 +1,3 @@
-import GitHubLogIn from "./GitHubLogIn";
 import LogIn from "./LogIn";
 import SignIn from "./SignIn";
 

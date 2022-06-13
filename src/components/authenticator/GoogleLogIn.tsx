@@ -4,7 +4,6 @@ import { auth } from "./firebaseConfig"
 import { logInReducer } from "../../features/loggedInSlice"
 import { useNavigate } from "react-router-dom";
 import { Avatar, Button, Container } from "@mantine/core";
-import { Typography } from "tabler-icons-react";
 
 
 const GoogleLogIn: React.FunctionComponent = () => {
