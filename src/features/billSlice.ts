@@ -1,8 +1,7 @@
 import { billType, fetchBillStatus } from './../types/billTypes';
-import { RootState } from './../app/store';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchReceiptStatus, IReceiptState, receiptType } from '../types/receiptTypes';
-import { IBillState } from '../types/billTypes';
+import { IBillState } from "../types/billTypes";
+import { RootState } from '../app/store';
 
 const URL_BASE = 'http://localhost:8081';
 
@@ -29,45 +28,46 @@ export const createBill:any = createAsyncThunk('/save/bill', async (bill:billTyp
     return (await response.json()) as billType
 })
   
-export const billSlice = createSlice({ 
-    name: "bills",
-    initialState,
-    reducers: {
-        billAdded: (state, action) => {},
-    },
-    extraReducers: (builder) => {
-        //get all bills
-        builder.addCase(getAllBills.pending, (state, action) => {
-            state.status = fetchBillStatus.PENDING
-        })
-        builder.addCase(getAllBills.fulfilled, (state, action) => {
-            state.status = fetchBillStatus.COMPLETED
-            state.bills = action.payload
-        })
-        builder.addCase(getAllBills.rejected, (state, action) => {
-            state.status = fetchBillStatus.FAILED
-            state.error = 'Something went wrong while fetching'
-            state.bills = []
-        })
-        // new bill
-        builder.addCase(createBill.pending, (state) => {
-            state.status = fetchBillStatus.PENDING
-        })
-        builder.addCase(createBill.fulfilled, (state, action) => {
-            state.status = fetchBillStatus.COMPLETED
-            state.bills.push(action.payload)
-        })
-        builder.addCase(createBill.rejected, (state) => {
-            state.status = fetchBillStatus.FAILED
-            state.error = 'Something went wrong while creating the bill'
-        })
-    },
-})
+export const billSlice = createSlice(
+    {
+        name: 'bill',
+        initialState,
+        reducers: {
 
-export const { billAdded } = billSlice.actions;
+        },
+        //GET BILLS
+        extraReducers: (builder) => {
+            builder.addCase(getAllBills.pending, (state, action) => {
+                state.status = fetchBillStatus.PENDING
+            })
+            builder.addCase(getAllBills.fulfilled, (state, action) => {
+                state.status = fetchBillStatus.COMPLETED
+                state.bills = action.payload
+            })
+            builder.addCase(getAllBills.rejected, (state, action) => {
+                state.status = fetchBillStatus.FAILED
+                state.bills = []
+            })
 
-export const selectReceiptState = () => (state: RootState) => state.bills.bills
-export const selectReceiptStatus = () => (state: RootState) => state.bills.status
-export const selectReceiptFetchError = () => (state: RootState) => state.bills.error
+            //POST BILL
+            builder.addCase(createBill.pending, (state) => {
+                state.status = fetchBillStatus.PENDING
+            })
+            builder.addCase(createBill.fulfilled, (state, action) => {
+                state.status = fetchBillStatus.COMPLETED
+                state.bills.push(action.payload)
+            })
+            builder.addCase(createBill.rejected, (state) => {
+                state.status = fetchBillStatus.FAILED
+                state.error = "Sorry, something went wrong!"
+            })
+        }
+    }
+)
+
+export const selectBillState = (state: RootState ) => state.bills.bills
+export const selectBillStatus = (state: RootState) => state.bills.status
+export const selectBillError = (state: RootState) => state.bills.error
+
 
 export default billSlice.reducer;

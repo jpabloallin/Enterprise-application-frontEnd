@@ -1,23 +1,41 @@
+import { providerType } from "./providerTypes"
+
 export type billType = {
     id: string
     client: string
     date?: string
     seller: string
     total: number
-    productsSold: IProductsSold[]
+    productsSold: productSoldType[]
 }
+
+
+export type soldProductsType = {
+    id: number | string,
+    name: string,
+    price: number,
+    units: number,
+}
+
+export type productSoldType = {
+    id: number | string,
+    name: string,
+    description: string,
+    minimumUnits: number,
+    maximumUnits: number,
+    currentUnits: number,
+    price: number,
+    subTotal: number,
+    balance: number
+    provider: providerType
+     
+}
+
 
 export interface IBillState {
-    bills: billType[]
-    status: fetchBillStatus
+    bills: billType[],
+    status: fetchBillStatus,
     error: string | null
-}
-
-export interface IProductsSold {
-    id: string
-    name: string
-    price: number
-    units: number
 }
 
 export enum fetchBillStatus {
