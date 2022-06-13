@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchProductStatus, IProductState } from '../types/productTypes';
 
 
-const URL_BASE = 'http://localhost:8081';
+const URL_BASE = 'https://enterprise-app-sofkau.herokuapp.com';
 
 const initialState: IProductState = {
     products: [],

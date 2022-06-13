@@ -2,7 +2,7 @@ import { RootState } from './../app/store';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchReceiptStatus, IReceiptState, receiptType } from '../types/receiptTypes';
 
-const URL_BASE = 'http://localhost:8081';
+const URL_BASE = 'https://enterprise-app-sofkau.herokuapp.com';
 
 const initialState: IReceiptState = {
     receipts: [],

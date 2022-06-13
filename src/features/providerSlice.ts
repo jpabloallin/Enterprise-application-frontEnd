@@ -3,7 +3,7 @@ import { fetchProviderStatus } from './../types/providerTypes';
 import { IProviderState, providerType } from '../types/providerTypes';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const URL_BASE = 'http://localhost:8081';
+const URL_BASE = 'https://enterprise-app-sofkau.herokuapp.com';
 
 const initialState: IProviderState = {
     providers: [],
