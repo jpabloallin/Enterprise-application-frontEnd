@@ -60,17 +60,14 @@ const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = (props) => {
     <>
       <div className="row">
         <div>
-          <div className="row">
-            <div className="form-group col-md-4">
-              <label>
-                <i>Select product</i>
-              </label>
+          <div className="row m-2">
+            <div className="form-group col-md-4 mt-4">
               <select
                 className="form-select"
                 aria-label="Default select example"
                 onChange={(e) => addProduct(e)}
               >
-                <option>---------</option>
+                <option selected disabled>Select product</option>
                 {products.map((prod) => (
                   <option key={prod.id} value={prod.id}>
                     {prod.name}
@@ -79,21 +76,19 @@ const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = (props) => {
               </select>
             </div>
 
-            <div className="form-group col-md-4">
-              <label>
-                <i>Current units</i>
-              </label>
+            <div className="form-group col-md-4 d-flex align-items-center pt-3">
+              <label className= "p-3">Units</label>
               <input
                 type="number"
                 className="form-control"
-                name="quantity"
-                placeholder="Quantity"
+                name="currentunits"
+                placeholder="currentunits"
                 value={currentUnits}
                 onChange={(e) => setCurrentUnits(e.target.value)}
               />
             </div>
-            <div className="col-md-4">
-              <button onClick={(e) => onAdd(e)} type="submit" className="btn btn-primary col-md-10">
+            <div className="col-md-2">
+              <button onClick={(e) => onAdd(e)} type="submit" className="btn btn-success mt-4 btn-outline-dark btn-lg">
                 Add product
               </button>
             </div>

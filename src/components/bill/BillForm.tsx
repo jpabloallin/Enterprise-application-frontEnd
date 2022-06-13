@@ -12,7 +12,7 @@ import * as currentDate from "moment";
 interface IBillFormProps {
 }
 
-const BillForm: React.FunctionComponent<IBillFormProps> = (props) => {
+const BillForm: React.FunctionComponent<IBillFormProps> = () => {
   
   const [client, setClient] = useState('')
   const [seller, setSeller] = useState('')
@@ -60,40 +60,25 @@ const BillForm: React.FunctionComponent<IBillFormProps> = (props) => {
   return (
     <div className="row">
       <div className="col-md">
-        <div className="card card-body">
-          <h5>Create a Bill</h5>
+        <div className="border border-dark bg-success text-white">
+          <h2>Create a Bill</h2>
         </div>
         <div className="card card-body">
           <form onSubmit={(e) => onAdd(e)}>
             <div className="row">
-              
             <div className="form-group col-md-6">
-                <label></label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name='customerName'
-                  placeholder="Customer name"
-                  value={client}
+                <input type="text" className="form-control" name='cliente' placeholder="Cliente name" value={client}
                   onChange={(e) => setClient(e.target.value)}
                 />
               </div>
-
               <div className="form-group col-md-6">
-                <label></label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name='sellerName'
-                  placeholder="Seller name"
-                  value={seller}
+                <input type="text" className="form-control" name='sellerName' placeholder="Seller name" value={seller}
                   onChange={(e) => setSeller(e.target.value)}
                 />
               </div>
-
             </div>  
             <ProductsSoldForm />          
-            <button type="submit" className="btn btn-primary col-md-3">Generate Bill</button>
+            <button type="submit" className="btn btn-success mb-2 mt-3 btn-outline-dark btn-lg">Generate Bill</button>
           </form>
         </div>
       </div>

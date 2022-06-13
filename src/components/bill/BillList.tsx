@@ -30,19 +30,19 @@ const BillList: React.FunctionComponent<IBillListProps> = () => {
     
     <div className="col-md">
     
-        <div className="card card-body">
+        <div className="border border-dark bg-success text-white p-2">
             <h5>Bills</h5>
         </div>
         <div className="card card-body">
-            <table className="justTable">
-              <tbody>
+            <table className="table table-lg table-hover">
+              <thead className="thead-dark bg-dark text-white p-2">
                   <tr>
                       <th>Customer name:</th>
                       <th>Seller name:</th>                
                       <th>Total</th>
                       <th>Date:</th>
                   </tr>
-                </tbody>  
+                </thead>  
                 <tbody>
                 {!billError && bills.map((bill) => <Bill key={bill.id} bill={bill}/>)}
               </tbody>

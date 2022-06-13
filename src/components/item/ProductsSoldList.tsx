@@ -8,9 +8,9 @@ interface IProductsSoldListProps {
 const ItemList: React.FunctionComponent<IProductsSoldListProps> = ({items}) => {
   return (
     <>
-    <div className="card card-body">
-                <table className="justTable">
-                  <tbody>
+    <div className="mt-3">
+                <table className="table table-lg">
+                  <tbody className="thead-dark bg-dark text-white p-2">
                       <tr>
                           <th>Product:</th>
                           <th>Current Units</th>                
