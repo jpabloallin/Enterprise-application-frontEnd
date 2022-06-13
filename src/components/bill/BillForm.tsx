@@ -7,7 +7,6 @@ import { updateProduct } from '../../features/productSlice';
 import { billType, productSoldType } from '../../types/billTypes';
 import { createBill } from '../../features/billSlice';
 import ProductsSoldForm from '../item/ProductsSoldForm';
-import * as currentDate from "moment";
 
 interface IBillFormProps {
 }
@@ -23,14 +22,11 @@ const BillForm: React.FunctionComponent<IBillFormProps> = () => {
    const onAdd = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if(items.length !== 0){
-        
-    const date = currentDate(new Date()).format("DD/MM/YYYY")
       const total = items.reduce((subTotal, nextSubTotal) => subTotal + nextSubTotal.subTotal, 0)
       const newBill: billType =
       {
         id: nanoid(),
         client: client,
-        date:date,
         seller: seller,
         total: total,
         productsSold: items,

@@ -29,9 +29,9 @@ const ReceiptForm: React.FC<IReceiptFormProps> = () => {
     
     if (productId && units) {
       const product = products.filter(p => p.id === productId)[0];
-      const date = currentDate(new Date()).format("DD/MM/YYYY")
+      //const date = currentDate(new Date()).format("DD/MM/YYYY")
       const productToUpdate = editProduct as productType
-      const newReceipt: receiptType = {id:nanoid(), date:date, providerId:product.provider.id, productId:productId, units:units};
+      const newReceipt: receiptType = {id:nanoid(), providerId:product.provider.id, productId:productId, units:units};
       const updateProductCurrentUnits: productType = {...productToUpdate, currentUnits: productToUpdate?.currentUnits + units}
       //dispatch
       dispatch(createReceipt(newReceipt));

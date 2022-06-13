@@ -1,6 +1,6 @@
 export type receiptType = {
     id: string
-    date: string
+    date?: string
     providerId: string
     productId: string,
     units: number
