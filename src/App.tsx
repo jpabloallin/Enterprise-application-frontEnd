@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from './app/store'
 import GoogleLogIn from './components/login/GoogleLogIn'
 import LogOut from './components/login/LogOut'
+import BillList from './components/bill/BillList'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Link to="/provider" className="link-dark btn btn-secondary btn-lg active p-2">Provider</Link>
         <Link to="/product" className="link-dark btn btn-secondary btn-lg active p-2">Product</Link>
         <Link to="/receipt" className="link-dark btn btn-secondary btn-lg active p-2">Receipt</Link>
+        <Link to="/bill" className="link-dark btn btn-secondary btn-lg active p-2">Bill</Link>
         <Link to="/logOut" className="link-danger btn-outline-dark btn btn-secondary btn-lg active p-2">Log Out</Link>
       </nav>:
       <nav className="navbar navbar-dark bg-light d-flex justify-content-around p-1">
@@ -46,6 +48,7 @@ function App() {
         <Route path="/provider" element={<Provider/>} />
         <Route path="/product" element={<Product/>} />
         <Route path="/receipt" element={<Receipt/>} />
+        <Route path="/bill" element={<BillList/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>
