@@ -9,41 +9,41 @@ import { receiptType } from '../../types/receiptTypes'
 import ReceiptForm from './ReceiptForm'
 
 interface IReceiptProps { 
-  receipt?: receiptType
+  receipt: receiptType
 }
 
 const Receipt:React.FC<IReceiptProps> = () => {
-  const dispatch = useDispatch()
-  const error = useSelector(selectReceiptFetchError())
-  const receiptsState = useSelector(selectReceiptState())
-  const receipts = useSelector((state: RootState) => state.receipts.receipts);
-  const products = useSelector(selectProductState())
-  const providers = useSelector(selectProviderState())
-  const { user } = useSelector((state: RootState) => state.logged);
-  const navigate = useNavigate();
-  
   useEffect(() => {
-    if (user === null) {
-      navigate("/");
-    }
-  }, []);
+    dispatch(getAllReceipts())
+  }, [])
 
   useEffect(() => {
     dispatch(getAllProducts())
   }, [])
 
   useEffect(() => {
-    dispatch(getAllReceipts())
-  }, [])
-
-  useEffect(() => {
     dispatch(getAllProviders())
   }, [])
 
-  const renderList = ():any => {
+  const receipts = useSelector((state: RootState) => state.receipts.receipts);
+  const error = useSelector(selectReceiptFetchError())
+  const providers = useSelector(selectProviderState())
+  const products = useSelector(selectProductState())
+  const { user } = useSelector((state: RootState) => state.logged);
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    if (user === null) {
+      navigate("/");
+    }
+  }, [])
+
+
+  const renderList = () => {
     if(error) return <p><b>¡ERROR!</b> Unable to display receipts.</p>
-    if(receiptsState && products.length>0 && providers.length>0)  return receipts.map((receipt) => {
-      const productName = products.find(product => product.id === receipt.productId)!.name
+    if(receipts  && products.length>0)  return receipts.map((receipt) => {
+      const productName = products.find(product => product.id === receipt.productId)?.name
       const providerName = providers.find(provider => provider.id === receipt.providerId)?.name
       return (
         <tr key={receipt.id}>
