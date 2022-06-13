@@ -37,7 +37,13 @@ const Main = () => {
 
   return (
     <div>
-      <h1> Bienvenidos a la página de inicio!</h1>
+      <h1 className="p-4"> Welcome to Don Raul’s Hardware store!</h1>
+      <img 
+      src='https://previews.123rf.com/images/joyskifranzi/joyskifranzi1407/joyskifranzi140700049/29813184-ilustraci%C3%B3n-de-un-conjunto-de-software-y-hardware-de-la-computadora-incluyendo-pantallas-perif%C3%A9ricos.jpg'
+      className='img-thumbnail pb-4'
+      alt='...'
+      style={{ maxWidth: '31rem' }}
+    />
     </div>
   );
 };
