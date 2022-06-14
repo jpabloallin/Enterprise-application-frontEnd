@@ -87,10 +87,7 @@ const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = () => {
                 value={currentUnits}
                 onChange={(e) => setCurrentUnits(e.target.value)}
               />
-              {currentUnits <= 0 &&
-                <Alert title="¡Alert!" color="red">
-                  Units must be greater than zero!
-                </Alert>}
+              {currentUnits <= 0 && <i>Units must be greater than zero!</i>}
             </div>
             <div className="col-md-2">
               <button onClick={(e) => onAdd(e)} type="submit" className="btn btn-success mt-4 btn-outline-dark btn-lg">
