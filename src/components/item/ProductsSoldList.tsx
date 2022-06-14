@@ -13,7 +13,7 @@ const ProductsSoldList: React.FunctionComponent<IProductsSoldListProps> = ({item
                   <tbody className="thead-dark bg-dark text-white p-2">
                       <tr>
                           <th>Product:</th>
-                          <th>Current Units</th>                
+                          <th>Units</th>                
                           <th>Price</th>
                           <th>Subtotal</th>
                       </tr>

@@ -6,12 +6,13 @@ import { getAllProducts, selectProductState } from "../../features/productSlice"
 import { addProductSoldReducer, getItems } from "../../features/productSoldSlice";
 import { productSoldType } from "../../types/billTypes";
 import ItemList from "./ProductsSoldList";
+import { Alert } from "@mantine/core";
 
 interface IItemFormProps {}
 
 const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = () => {
   const [product, setProduct] = useState({} as productType);
-  const [currentUnits, setCurrentUnits] = useState<any>(0);
+  const [currentUnits, setCurrentUnits] = useState<any>(1);
   const products = useSelector(selectProductState());
   const items = useSelector(getItems);
 
@@ -31,7 +32,7 @@ const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = () => {
 
   const onAdd = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    if(currentUnits && product && product.currentUnits >= currentUnits){
+    if(currentUnits > 0 && product && product.currentUnits >= currentUnits){
        const newItem: productSoldType = 
        {
         id: product.id,
@@ -82,9 +83,14 @@ const ProductsSoldForm: React.FunctionComponent<IItemFormProps> = () => {
                 className="form-control"
                 name="currentunits"
                 placeholder="currentunits"
+                min={0}
                 value={currentUnits}
                 onChange={(e) => setCurrentUnits(e.target.value)}
               />
+              {currentUnits <= 0 &&
+                <Alert title="¡Alert!" color="red">
+                  Units must be greater than zero!
+                </Alert>}
             </div>
             <div className="col-md-2">
               <button onClick={(e) => onAdd(e)} type="submit" className="btn btn-success mt-4 btn-outline-dark btn-lg">

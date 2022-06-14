@@ -80,8 +80,8 @@ const SignIn = () => {
           </button>
         </div>
         <div>
-        <GitHubLogIn/>
-      </div>
+          <GitHubLogIn/>
+        </div>
       </form>
     </div>
   );
