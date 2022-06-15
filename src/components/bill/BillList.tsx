@@ -51,7 +51,7 @@ const BillList: React.FunctionComponent<IBillListProps> = () => {
                       <th>Customer name:</th>
                       <th>Seller name:</th>                
                       <th>Total</th>
-                      <th>Date:</th>
+                      <th>Date</th>
                   </tr>
                 </thead>  
                 <tbody>

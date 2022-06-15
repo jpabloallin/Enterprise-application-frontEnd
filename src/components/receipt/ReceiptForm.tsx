@@ -8,6 +8,7 @@ import { getAllProviders } from "../../features/providerSlice";
 import { productType } from "../../types/productTypes";
 import { updateProduct } from "../../features/productSlice";
 import { Alert, NumberInput } from "@mantine/core";
+import moment from "moment";
 
 interface IReceiptFormProps {}
 
@@ -27,9 +28,10 @@ const ReceiptForm: React.FC<IReceiptFormProps> = () => {
     e.preventDefault();
     
     if (productId && units) {
+      let date = moment(new Date()).format("DD/MM/YYYY HH:mm:ss")
       const product = products.filter(p => p.id === productId)[0];
       const productToUpdate = editProduct as productType
-      const newReceipt: receiptType = {id:nanoid(), providerId:product.provider.id, productId:productId, units:units};
+      const newReceipt: receiptType = {id:nanoid(), date:date, providerId:product.provider.id, productId:productId, units:units};
       const updateProductCurrentUnits: productType = {...productToUpdate, currentUnits: productToUpdate?.currentUnits + units}
       //dispatch
       dispatch(createReceipt(newReceipt));
